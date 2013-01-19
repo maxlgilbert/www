@@ -24,15 +24,44 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Hello World</title>
+        
+        <!--Google Maps motherfucker-->
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBkW1sol551T8cyGPB-aVV2Wny-b5WpwoM&sensor=false">
+        </script>
+        <script>
+            function initialize()
+            {
+                var mapProp = {
+                    center:new google.maps.LatLng(39.951768,-75.190998),
+                    zoom:14,
+                    mapTypeId:google.maps.MapTypeId.ROADMAP
+                };
+                var map=new google.maps.Map(document.getElementById("googleMap")
+                                            ,mapProp);
+            }
+            
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+        
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
+        <!--<div class="app">
+            <h1>SMS in a Bottle</h1>
             <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
+                <p class="event listening">Finding Messages...</p>
                 <p class="event received">Device is Ready</p>
             </div>
+        </div>-->
+
+        <!--Map div-->
+        <div id="googleMap" style="width:300px;height:370px;"></div>
+        
+        <!--Testing button-->
+        <div>
+            <a class="messagebutton">Send a Message</a>
+            <a class="messagesbutton">Found Messages</a>
         </div>
+        
         <script type="text/javascript" src="cordova-2.3.0.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
