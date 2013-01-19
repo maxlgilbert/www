@@ -16,6 +16,27 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var gpsFunctions = {
+onSuccess: function(position) {
+    console.log(position.coords.latitude);
+    /*alert('Latitude: '          + position.coords.latitude          + '\n' +
+     'Longitude: '         + position.coords.longitude         + '\n' +
+     'Altitude: '          + position.coords.altitude          + '\n' +
+     'Accuracy: '          + position.coords.accuracy          + '\n' +
+     'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+     'Heading: '           + position.coords.heading           + '\n' +
+     'Speed: '             + position.coords.speed             + '\n' +
+     'Timestamp: '         + position.timestamp                + '\n');*/
+},
+    
+    // onError Callback receives a PositionError object
+    //
+onError: function(error) {
+    console.log("gps Fail");
+    /*alert('code: '    + error.code    + '\n' +
+     'message: ' + error.message + '\n');*/
+}
+}
 var app = {
     // Application Constructor
     initialize: function() {
@@ -27,7 +48,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        document.addEventListener( 'touchstart', touchstart, true );
+        document.addEventListener( 'touchstart', this.touchstart, true );
     },
     // deviceready Event Handler
     //
@@ -49,9 +70,39 @@ var app = {
         
         
     },
+    // onSuccess Callback
+    //   This method accepts a `Position` object, which contains
+    //   the current GPS coordinates
+    //
+    onSuccess: function(position) {
+        console.log("position.latitude");
+        /*alert('Latitude: '          + position.coords.latitude          + '\n' +
+              'Longitude: '         + position.coords.longitude         + '\n' +
+              'Altitude: '          + position.coords.altitude          + '\n' +
+              'Accuracy: '          + position.coords.accuracy          + '\n' +
+              'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+              'Heading: '           + position.coords.heading           + '\n' +
+              'Speed: '             + position.coords.speed             + '\n' +
+              'Timestamp: '         + position.timestamp                + '\n');*/
+    },
     
-    onTouchStart: function(){
+    // onError Callback receives a PositionError object
+    //
+    onError: function(error) {
+        console.log("gps Fail");
+        /*alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');*/
+    },
+    
+    touchstart: function(event){
         console.log("touch");
+        /*navigator.geolocation.getCurrentPosition(function one(position) {
+                                                 console.log(position.coords.longitude);}
+                                                 , function two(error) {
+                                                 console.log("gps Fail");
+                                                 });*/
+        navigator.geolocation.getCurrentPosition(gpsFunctions.onSuccess, gpsFunctions.onError);
+        
     }
     
 };
