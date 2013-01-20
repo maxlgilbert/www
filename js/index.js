@@ -67,7 +67,7 @@ var app = {
 
         console.log('Received Event: ' + id);
     },
-    touchstart: function(event){
+    touchstart: function(event) {
         console.log("touch");
         navigator.geolocation.getCurrentPosition(gpsFunctions.onSuccess, gpsFunctions.onError);
     }

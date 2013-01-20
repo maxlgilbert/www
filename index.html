@@ -28,6 +28,8 @@
         <!--Google Maps motherfucker-->
         <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBkW1sol551T8cyGPB-aVV2Wny-b5WpwoM&sensor=false">
         </script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.8.1/dropbox.min.js">
+        </script>
         <script>
             function initialize()
             {
@@ -66,6 +68,15 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
+
+            var Dropbox = require("dropbox");
+            var client = new Dropbox.Client({
+                key: "sw0vbtsn4svk086", secret: "zgwynjp4f7h1qku", sandbox:true
+            });
+
+            client.authDriver(new Dropbox.Drivers.Redirect());
+            
+
         </script>
     </body>
 </html>
